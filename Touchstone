@@ -1,0 +1,52 @@
+import java.util.Scanner;  // Import the Scanner class to take user input
+import java.util.InputMismatchException;  // Import InputMismatchException to handle invalid input
+
+public class GuessingGame {
+    public static void main(String[] args) {
+        // Initialize variables
+        int targetNumber = 50;  // The number to guess (fixed to 50 as per the requirements)
+        int userGuess = 0;  // The user's current guess
+        int attempts = 0;  // Variable to keep track of the number of attempts
+        Scanner scanner = new Scanner(System.in);  // Scanner object to read user input
+        
+        // Welcome message and instructions
+        System.out.println("Welcome to the Number Guessing Game!");
+        System.out.println("I am thinking of a number between 1 and 100.");
+        System.out.println("Can you guess it?");
+        
+        // Game loop: Continue until the user guesses the correct number
+        while (userGuess != targetNumber) {
+            System.out.print("Enter your guess: ");
+            
+            // Input validation
+            try {
+                userGuess = scanner.nextInt();  // Take the user's guess as an integer
+                
+                // Check if the guess is within the valid range
+                if (userGuess < 1 || userGuess > 100) {
+                    System.out.println("Please enter a valid number between 1 and 100.");
+                    continue;  // Skip the rest of the loop and prompt the user again
+                }
+
+                // Increment the attempts counter after a valid guess
+                attempts++;
+                
+                // Provide feedback based on the user's guess
+                if (userGuess < targetNumber) {
+                    System.out.println("Your guess is too low. Try again.");
+                } else if (userGuess > targetNumber) {
+                    System.out.println("Your guess is too high. Try again.");
+                }
+            } catch (InputMismatchException e) {
+                // Catch and handle invalid inputs (e.g., entering letters instead of numbers)
+                System.out.println("Please enter a valid number between 1 and 100.");
+                scanner.next();  // Consume the invalid input to prevent infinite loop
+            }
+        }
+        
+        // When the user guesses correctly, congratulate them and display the number of attempts
+        System.out.println("Congratulations! You guessed the correct number " + targetNumber + " in " + attempts + " attempts.");
+        
+        scanner.close();  // Close the scanner to release system resources
+    }
+}
