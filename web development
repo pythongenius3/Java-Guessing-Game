@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC Fitness Studio - Homepage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#classes">Classes</a></li>
+      </ul>
+    </nav>
+    <h1>Welcome to ABC Fitness Studio</h1>
+    <p>Transform your body, transform your life.</p>
+    <a href="#join" class="cta-button">Join Now</a>
+  </header>
+  
+  <section id="home">
+    <h2>Our Facilities</h2>
+    <div class="carousel">
+      <img src="gym_1.jpg" alt="Gym 1">
+      <img src="gym_2.jpg" alt="Gym 2">
+      <img src="gym_3.jpg" alt="Gym 3">
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2024 ABC Fitness Studio</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+header {
+  background-color: #0057b8;  /* Blue background */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.cta-button {
+  background-color: #00b140;  /* Green button */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  background-color: #003d6b;  /* Dark blue footer */
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+// JavaScript for carousel or other interactive elements
+document.addEventListener('DOMContentLoaded', function () {
+  let currentImageIndex = 0;
+  const images = document.querySelectorAll('.carousel img');
+  
+  setInterval(() => {
+    images[currentImageIndex].style.display = 'none';
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    images[currentImageIndex].style.display = 'block';
+  }, 3000); // Change image every 3 seconds
+});
+<section id="gallery">
+  <h2>Our Gallery</h2>
+  <div class="gallery-grid">
+    <img src="gallery1.jpg" alt="Gallery Image 1">
+    <img src="gallery2.jpg" alt="Gallery Image 2">
+    <img src="gallery3.jpg" alt="Gallery Image 3">
+    <!-- More images -->
+  </div>
+</section>
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+}
+<section id="about">
+  <h2>About Us</h2>
+  <p>At ABC Fitness Studio, we are committed to helping our members achieve their fitness goals through personalized training programs and state-of-the-art equipment.</p>
+  <h3>Our Team</h3>
+  <ul>
+    <li>John Doe - Founder & Trainer</li>
+    <li>Jane Smith - Yoga Instructor</li>
+    <!-- Add more team members -->
+  </ul>
+</section>
+<section id="classes">
+  <h2>Class Schedule</h2>
+  <div id="class-schedule">
+    <p>Choose a class to book:</p>
+    <button class="book-class">Yoga Class</button>
+    <button class="book-class">HIIT Class</button>
+    <!-- More class buttons -->
+  </div>
+</section>
+document.querySelectorAll('.book-class').forEach(button => {
+  button.addEventListener('click', function () {
+    alert(`${this.innerText} has been added to your cart!`);
+  });
+});
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-button {
+    padding: 10px;
+  }
+}
